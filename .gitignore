@@ -1,0 +1,16 @@
+# Virtual environments
+qiskit_env/
+venv/
+.venv/
+
+# Python bytecode / cache
+__pycache__/
+*.py[cod]
+
+# IDE settings
+.vscode/
+.idea/
+
+# Saved plots / screenshots
+*.png
+!docs/*.png
