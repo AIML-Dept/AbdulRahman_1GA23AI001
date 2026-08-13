@@ -1,6 +1,6 @@
-# AML23703 — Quantum Computing: Tutorials 1–3
+# AML23703 — Quantum Computing: Tutorials 1–4
 
-Qiskit solutions for the hands-on exercises in Tutorials 1, 2 and 3.
+Qiskit solutions for the hands-on exercises in Tutorials 1, 2, 3 and 4.
 
 ## Repository layout
 
@@ -25,6 +25,13 @@ Week_03/   Tutorial 3 — Single-Qubit Quantum Gates
   T03.py   [Hard]       5 random gates: analytic vs statevector vs sampled
   T04.py   [Real-world] A quantum coin-flip betting game and the house edge
   T05.py   [Challenge]  Proving HZH = X five different ways
+
+Week_04/   Tutorial 4 — Multi-Qubit Gates and Circuit Composition
+  T01.py   [Easy]       CNOT with control in |1>, full truth table generated
+  T02.py   [Medium]     Bell state, 1024 shots, only 00 and 11 verified
+  T03.py   [Hard]       3-qubit GHZ state and its perfect three-way correlation
+  T04.py   [Real-world] Reversible full adder from Toffoli and CNOT gates
+  T05.py   [Challenge]  A non-Bell entangled state rebuilt by state tomography
 
 REFLECTIONS.md          Written answers to the reflection questions
 ```
@@ -81,4 +88,8 @@ The Qiskit 1.0 release removed `execute()`; these scripts use the current
 - Console output is ASCII-only (`|0>` rather than `|0⟩`) so it renders correctly in
   Windows terminals, which otherwise raise `UnicodeEncodeError` on the ket character.
 - Random seeds are fixed where reproducibility helps (`Week_01/T04.py`,
-  `Week_02/T04.py`, `Week_03/T03.py`). Change the `SEED` constant for a fresh run.
+  `Week_02/T04.py`, `Week_03/T03.py`, `Week_04/T02.py`, `Week_04/T03.py`,
+  `Week_04/T05.py`). Change the `SEED` constant for a fresh run.
+- Qiskit labels a basis state as `|q2 q1 q0>`, so qubit 0 is the *rightmost*
+  character. The Week_04 scripts print labels in that order and use
+  `outcome[::-1][i]` wherever an individual qubit has to be read out.
