@@ -33,6 +33,13 @@ Week_04/   Tutorial 4 — Multi-Qubit Gates and Circuit Composition
   T04.py   [Real-world] Reversible full adder from Toffoli and CNOT gates
   T05.py   [Challenge]  A non-Bell entangled state rebuilt by state tomography
 
+Week_05/     Tutorial 5 - Quantum Measurement and Probability Analysis
+  T01.py     [Easy]         100 / 1000 / 10000 shots: P(0) converging to 0.5
+  T02.py     [Medium]       |+> and |-> measured in the X basis after an H
+  T03.py     [Hard]         Partial measurement of a Bell pair collapses the partner
+  T04.py     [Real-world]   Recovering a hidden Ry angle from measurement counts
+  T05.py     [Challenge]    Chi-square test: quantum RNG vs biased classical PRNG
+
 REFLECTIONS.md          Written answers to the reflection questions
 ```
 
