@@ -1,6 +1,6 @@
-# AML23703 — Quantum Computing: Tutorials 1–4
+# AML23703 — Quantum Computing: Tutorials 1–6
 
-Qiskit solutions for the hands-on exercises in Tutorials 1, 2, 3 and 4.
+Qiskit solutions for the hands-on exercises in Tutorials 1 to 6.
 
 ## Repository layout
 
@@ -33,14 +33,21 @@ Week_04/   Tutorial 4 — Multi-Qubit Gates and Circuit Composition
   T04.py   [Real-world] Reversible full adder from Toffoli and CNOT gates
   T05.py   [Challenge]  A non-Bell entangled state rebuilt by state tomography
 
-Week_05/     Tutorial 5 - Quantum Measurement and Probability Analysis
-  T01.py     [Easy]         100 / 1000 / 10000 shots: P(0) converging to 0.5
-  T02.py     [Medium]       |+> and |-> measured in the X basis after an H
-  T03.py     [Hard]         Partial measurement of a Bell pair collapses the partner
-  T04.py     [Real-world]   Recovering a hidden Ry angle from measurement counts
-  T05.py     [Challenge]    Chi-square test: quantum RNG vs biased classical PRNG
+Week_05/   Tutorial 5 — Quantum Measurement and Probability Analysis
+  T01.py   [Easy]       100 / 1000 / 10000 shots: P(0) converging to 0.5
+  T02.py   [Medium]     |+> and |-> measured in the X basis after an H
+  T03.py   [Hard]       Partial measurement of a Bell pair collapses the partner
+  T04.py   [Real-world] Recovering a hidden Ry angle from measurement counts
+  T05.py   [Challenge]  Chi-square test: quantum RNG vs biased classical PRNG
+  REFLECTIONS.md        Written answers to the reflection questions
 
-REFLECTIONS.md          Written answers to the reflection questions
+Week_06/   Tutorial 6 — Simon's Algorithm: Concept and Implementation
+  T01.py   [Easy]       Oracle for s = '110', truth table checked for the period
+  T02.py   [Medium]     Full Simon circuit, n-1 independent equations collected
+  T03.py   [Hard]       4-bit secret, GF(2) system solved in code to recover s
+  T04.py   [Real-world] Query counts vs classical search to n = 20, speedup plotted
+  T05.py   [Challenge]  Any secret recovered automatically, all-zero case handled
+  REFLECTIONS.md        Written answers to the reflection questions
 ```
 
 ## Setup
@@ -96,7 +103,12 @@ The Qiskit 1.0 release removed `execute()`; these scripts use the current
   Windows terminals, which otherwise raise `UnicodeEncodeError` on the ket character.
 - Random seeds are fixed where reproducibility helps (`Week_01/T04.py`,
   `Week_02/T04.py`, `Week_03/T03.py`, `Week_04/T02.py`, `Week_04/T03.py`,
-  `Week_04/T05.py`). Change the `SEED` constant for a fresh run.
+  `Week_04/T05.py`, and every script in `Week_06`). Change the `SEED` constant
+  for a fresh run.
 - Qiskit labels a basis state as `|q2 q1 q0>`, so qubit 0 is the *rightmost*
   character. The Week_04 scripts print labels in that order and use
-  `outcome[::-1][i]` wherever an individual qubit has to be read out.
+  `outcome[::-1][i]` wherever an individual qubit has to be read out. The
+  Week_06 scripts flip every measurement key with `key[::-1]` for the same
+  reason, so that position `i` of a printed string always means qubit `i`.
+- `Week_06/T04.py` opens a two-panel matplotlib window (query counts and
+  speedup). Close it to let the script finish.
