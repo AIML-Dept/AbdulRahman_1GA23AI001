@@ -1,6 +1,6 @@
-# AML23703 — Quantum Computing: Tutorials 1–6
+# AML23703 — Quantum Computing: Tutorials 1–7
 
-Qiskit solutions for the hands-on exercises in Tutorials 1 to 6.
+Qiskit solutions for the hands-on exercises in Tutorials 1 to 7.
 
 ## Repository layout
 
@@ -47,6 +47,14 @@ Week_06/   Tutorial 6 — Simon's Algorithm: Concept and Implementation
   T03.py   [Hard]       4-bit secret, GF(2) system solved in code to recover s
   T04.py   [Real-world] Query counts vs classical search to n = 20, speedup plotted
   T05.py   [Challenge]  Any secret recovered automatically, all-zero case handled
+  REFLECTIONS.md        Written answers to the reflection questions
+
+Week_07/   Tutorial 7 — Deutsch's Algorithm: Demonstrating Quantum Advantage
+  T01.py   [Easy]       Constant oracle f(x) = 0, one query returns '0'
+  T02.py   [Medium]     Balanced oracle f(x) = x, kickback traced statevector by statevector
+  T03.py   [Hard]       make_oracle(kind) builds all four functions from their truth tables
+  T04.py   [Real-world] Kickback read as a binary classification decision, with a slide
+  T05.py   [Challenge]  Miscalibrated Hadamards: error curves, closed forms, bar chart
   REFLECTIONS.md        Written answers to the reflection questions
 ```
 
@@ -103,8 +111,8 @@ The Qiskit 1.0 release removed `execute()`; these scripts use the current
   Windows terminals, which otherwise raise `UnicodeEncodeError` on the ket character.
 - Random seeds are fixed where reproducibility helps (`Week_01/T04.py`,
   `Week_02/T04.py`, `Week_03/T03.py`, `Week_04/T02.py`, `Week_04/T03.py`,
-  `Week_04/T05.py`, and every script in `Week_06`). Change the `SEED` constant
-  for a fresh run.
+  `Week_04/T05.py`, and every script in `Week_06` and `Week_07`). Change the
+  `SEED` constant for a fresh run.
 - Qiskit labels a basis state as `|q2 q1 q0>`, so qubit 0 is the *rightmost*
   character. The Week_04 scripts print labels in that order and use
   `outcome[::-1][i]` wherever an individual qubit has to be read out. The
@@ -112,3 +120,7 @@ The Qiskit 1.0 release removed `execute()`; these scripts use the current
   reason, so that position `i` of a printed string always means qubit `i`.
 - `Week_06/T04.py` opens a two-panel matplotlib window (query counts and
   speedup). Close it to let the script finish.
+- `Week_07/T04.py` opens a three-panel explanatory slide and `Week_07/T05.py`
+  a two-panel error chart. Close each window to let the script finish.
+- `Week_07/T05.py` is the only script that needs `scipy`, for the binomial
+  tail behind its majority-vote table.
