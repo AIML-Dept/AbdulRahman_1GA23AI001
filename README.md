@@ -1,6 +1,6 @@
-# AML23703 — Quantum Computing: Tutorials 1–7
+# AML23703 — Quantum Computing: Tutorials 1–8
 
-Qiskit solutions for the hands-on exercises in Tutorials 1 to 7.
+Qiskit solutions for the hands-on exercises in Tutorials 1 to 8.
 
 ## Repository layout
 
@@ -55,6 +55,14 @@ Week_07/   Tutorial 7 — Deutsch's Algorithm: Demonstrating Quantum Advantage
   T03.py   [Hard]       make_oracle(kind) builds all four functions from their truth tables
   T04.py   [Real-world] Kickback read as a binary classification decision, with a slide
   T05.py   [Challenge]  Miscalibrated Hadamards: error curves, closed forms, bar chart
+  REFLECTIONS.md        Written answers to the reflection questions
+
+Week_08/   Tutorial 8 — Deutsch–Jozsa Algorithm: Exponential Speedup
+  T01.py   [Easy]       Constant oracle on 3 qubits, '000' on every shot
+  T02.py   [Medium]     Balanced parity oracle on 3 qubits, never '000' (always '111')
+  T03.py   [Hard]       n = 2 to 5 as a parameter, oracles for both cases built automatically
+  T04.py   [Real-world] Classical 2^(n-1)+1 vs 1 quantum query for n = 2 to 10, plotted
+  T05.py   [Challenge]  Random oracles from ALL balanced functions, 100/100 classified
   REFLECTIONS.md        Written answers to the reflection questions
 ```
 
