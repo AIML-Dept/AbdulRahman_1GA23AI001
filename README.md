@@ -1,6 +1,6 @@
-# AML23703 — Quantum Computing: Tutorials 1–8
+# AML23703 — Quantum Computing: Tutorials 1–9
 
-Qiskit solutions for the hands-on exercises in Tutorials 1 to 8.
+Qiskit solutions for the hands-on exercises in Tutorials 1 to 9.
 
 ## Repository layout
 
@@ -64,6 +64,14 @@ Week_08/   Tutorial 8 — Deutsch–Jozsa Algorithm: Exponential Speedup
   T04.py   [Real-world] Classical 2^(n-1)+1 vs 1 quantum query for n = 2 to 10, plotted
   T05.py   [Challenge]  Random oracles from ALL balanced functions, 100/100 classified
   REFLECTIONS.md        Written answers to the reflection questions
+
+Week_09/   Tutorial 9 — Quantum Entanglement and Bell State Analysis
+  T01.py   [Easy]       Phi+ from H + CNOT, only '00' and '11' in 1024 shots
+  T02.py   [Medium]     All four Bell states tabulated, orthonormal, entropy 1 bit each
+  T03.py   [Hard]       Bell pairs in the Hadamard basis vs a classical '00'/'11' source
+  T04.py   [Real-world] Entanglement-based key exchange, Eve caught by QBER and CHSH
+  T05.py   [Challenge]  GHZ vs W: one qubit measured or traced out, entanglement left
+  REFLECTIONS.md        Written answers to the reflection questions
 ```
 
 ## Setup
@@ -119,13 +127,14 @@ The Qiskit 1.0 release removed `execute()`; these scripts use the current
   Windows terminals, which otherwise raise `UnicodeEncodeError` on the ket character.
 - Random seeds are fixed where reproducibility helps (`Week_01/T04.py`,
   `Week_02/T04.py`, `Week_03/T03.py`, `Week_04/T02.py`, `Week_04/T03.py`,
-  `Week_04/T05.py`, and every script in `Week_06`, `Week_07` and `Week_08`). Change the
-  `SEED` constant for a fresh run.
+  `Week_04/T05.py`, and every script in `Week_06`, `Week_07`, `Week_08` and
+  `Week_09`). Change the `SEED` constant for a fresh run.
 - Qiskit labels a basis state as `|q2 q1 q0>`, so qubit 0 is the *rightmost*
   character. The Week_04 scripts print labels in that order and use
   `outcome[::-1][i]` wherever an individual qubit has to be read out. The
-  Week_06 and Week_08 scripts flip every measurement key with `key[::-1]` for
-  the same reason, so that position `i` of a printed string always means qubit `i`.
+  Week_06, Week_08 and Week_09 scripts flip every measurement key with
+  `key[::-1]` for the same reason, so that position `i` of a printed string
+  always means qubit `i`.
 - `Week_06/T04.py` opens a two-panel matplotlib window (query counts and
   speedup). Close it to let the script finish.
 - `Week_07/T04.py` opens a three-panel explanatory slide and `Week_07/T05.py`
@@ -137,3 +146,16 @@ The Qiskit 1.0 release removed `execute()`; these scripts use the current
 - `Week_08/T05.py` builds its oracles from truth tables with multi-controlled X
   gates (`qc.mcx`), which `AerSimulator` runs directly. It takes a few seconds,
   because it checks all 100 random oracles input by input before running them.
+- Every `Week_09` script opens one matplotlib window (`T04.py` and `T05.py`
+  draw two panels in it). Close it to let the script finish.
+- `Week_09` runs circuits that are compared side by side as ONE job,
+  `sim.run([qc1, qc2, ...])`. Aer gives each circuit in a job its own seed
+  derived from `SEED`; separate `run()` calls would all restart from `SEED`
+  and give identical splits for states with the same probabilities.
+- `Week_09/T04.py` lets the eavesdropper copy Bob's bit onto her own qubit
+  with a CNOT instead of measuring mid-circuit. The statistics are the same
+  (deferred measurement), and with every measurement at the end Aer samples
+  the shots independently; with a mid-circuit measurement it seeds shot `i`
+  as `SEED + i`, so runs with nearby seeds repeat each other.
+- `Week_09/T05.py` uses `partial_trace`, `entropy` and `concurrence` from
+  `qiskit.quantum_info`, which ship with Qiskit.
