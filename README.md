@@ -119,16 +119,21 @@ The Qiskit 1.0 release removed `execute()`; these scripts use the current
   Windows terminals, which otherwise raise `UnicodeEncodeError` on the ket character.
 - Random seeds are fixed where reproducibility helps (`Week_01/T04.py`,
   `Week_02/T04.py`, `Week_03/T03.py`, `Week_04/T02.py`, `Week_04/T03.py`,
-  `Week_04/T05.py`, and every script in `Week_06` and `Week_07`). Change the
+  `Week_04/T05.py`, and every script in `Week_06`, `Week_07` and `Week_08`). Change the
   `SEED` constant for a fresh run.
 - Qiskit labels a basis state as `|q2 q1 q0>`, so qubit 0 is the *rightmost*
   character. The Week_04 scripts print labels in that order and use
   `outcome[::-1][i]` wherever an individual qubit has to be read out. The
-  Week_06 scripts flip every measurement key with `key[::-1]` for the same
-  reason, so that position `i` of a printed string always means qubit `i`.
+  Week_06 and Week_08 scripts flip every measurement key with `key[::-1]` for
+  the same reason, so that position `i` of a printed string always means qubit `i`.
 - `Week_06/T04.py` opens a two-panel matplotlib window (query counts and
   speedup). Close it to let the script finish.
 - `Week_07/T04.py` opens a three-panel explanatory slide and `Week_07/T05.py`
   a two-panel error chart. Close each window to let the script finish.
 - `Week_07/T05.py` is the only script that needs `scipy`, for the binomial
   tail behind its majority-vote table.
+- `Week_08/T04.py` opens a two-panel chart (normal scale and log scale). Close
+  it to let the script finish.
+- `Week_08/T05.py` builds its oracles from truth tables with multi-controlled X
+  gates (`qc.mcx`), which `AerSimulator` runs directly. It takes a few seconds,
+  because it checks all 100 random oracles input by input before running them.
