@@ -132,3 +132,25 @@ for n in N_VALUES:
 print(f"\nClassified correctly: {grand_correct} / {grand_total} random balanced functions")
 print("Each oracle needs 2^(n-1) multi-controlled gates, so the BOX grows with n,")
 print("but Deutsch-Jozsa still opens it exactly once.")
+
+# 3. Extra, for Reflection Q2: break the promise on purpose.
+#    Same builder, n = 3, with f(x) = 1 on k inputs for every k from 0 to 8.
+#    Theory: P('000') = (average phase)^2 = ((8 - 2k) / 8)^2.
+n = 3
+print("\nExtra: what if f is NEITHER constant NOR balanced?  (n = 3)")
+print(" k = inputs with f=1 | really is | P('000') theory | P('000') measured")
+print("-" * 70)
+for k in range(2 ** n + 1):
+    ones = random.sample(all_inputs(n), k)
+    table = {x: (1 if x in ones else 0) for x in all_inputs(n)}
+    counts = deutsch_jozsa_counts(oracle_from_table(table, n), n)
+
+    kind = 'constant' if k in (0, 2 ** n) else 'balanced' if k == 2 ** (n - 1) else 'NEITHER'
+    theory = ((2 ** n - 2 * k) / 2 ** n) ** 2
+    measured = counts.get('000', 0) / SHOTS
+    print(f"          {k}          | {kind:9s} |      {theory:.4f}     |      {measured:.4f}")
+
+print("\nOnly k = 0, 4 and 8 give a certain answer. For every other k the")
+print("algorithm still prints SOMETHING, but it is a weighted coin flip: with")
+print("k = 1 it says 'constant' about 56% of the time and 'balanced' 44%.")
+print("It cannot tell you the promise was broken -- see REFLECTIONS.md, Q2.")
